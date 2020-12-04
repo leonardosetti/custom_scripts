@@ -37,6 +37,16 @@ up_script_git() {
 	echo $(git -C $REPO/github/custom_scripts/ add .)
 	echo $(git -C $REPO/github/custom_scripts/ commit -am "auto push from $HOST  as $USER at $TODAY")
 	echo $(git -C $REPO/github/custom_scripts/ push)
+	stdout=$(tempfile)
+        stderr=$(tempfile)
+
+    	if ! git "$@" </dev/null >$stdout 2>$stderr; then
+        	cat $stderr >&2
+        	rm -f $stdout $stderr
+        	exit 1
+    	fi
+
+    	rm -f $stdout $stderr
 }
 
 up_script_git > /dev/null
