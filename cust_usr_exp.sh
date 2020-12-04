@@ -39,5 +39,5 @@ up_script_git() {
 	echo $(git -C $REPO/github/custom_scripts/ push)
 }
 
-up_script_git
+up_script_git > /dev/null
 
