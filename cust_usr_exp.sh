@@ -34,7 +34,7 @@ yes | cp -rf $PRFLD/cust_usr_exp.sh $REPO/github/custom_scripts/
 
 up_script_git() {
 	echo $(git -C $REPO/github/custom_scripts/ add .)
-	echo $(git -C $REPO/github/custom_scripts/ commit -m \'auto push from $(hostname) as $(whoami) st $(date)\')
+	echo $(git -C $REPO/github/custom_scripts/ commit -am 'auto push from $(hostname) as $(whoami) at $(date)')
 	echo $(git -C $REPO/github/custom_scripts/ push)
 }
 
