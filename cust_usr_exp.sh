@@ -26,6 +26,7 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
+# Useful custom functions
 tcpdv() {
 	echo $(sudo tcpdump -vv | grep -i $1 | tee ~/lab/tcpdump_UDP.log | cat -l log)
 }
@@ -35,9 +36,9 @@ yes | cp -rf $PRFLD/cust_usr_exp.sh $REPO/github/custom_scripts/
 export TODAY=$(date|awk '{print $2" " $3" " $4}')
 up_script_git() {
 	echo $(git -C $REPO/github/custom_scripts/ add .)
-	echo $(git -C $REPO/github/custom_scripts/ commit -am -q "auto push from $HOST  as $USER at $TODAY")
-	echo $(git -C $REPO/github/custom_scripts/ push -q)
+	echo $(git -C $REPO/github/custom_scripts/ commit --quiet -am  "auto push from $HOST as $USER at $TODAY")
+	echo $(git -C $REPO/github/custom_scripts/ push --quiet)
 }
 
-up_script_git > /dev/null
+up_script_git
 
