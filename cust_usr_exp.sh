@@ -27,9 +27,16 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 tcpdv() {
-#	echo $(sudo tcpdump -vv | grep -i $1 | tee -a $REPO/github/shell/func_sample.log | cat -l log)
 	echo $(sudo tcpdump -vv | grep -i $1 | tee ~/lab/tcpdump_UDP.log | cat -l log)
 }
 
 yes | cp -rf $PRFLD/cust_usr_exp.sh $REPO/github/custom_scripts/ 
+
+up_script_git() {
+	echo $(git -C $REPO/github/custom_scripts/ add .)
+	echo $(git -C $REPO/github/custom_scripts/ commit -m \'auto push from $(hostname) as $(whoami) st $(date)\')
+	echo $(git -C $REPO/github/custom_scripts/ push)
+}
+
+up_script_git
 
