@@ -26,6 +26,10 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
-export tcpdv="tcpdv() {sudo tcpdump | grep "$1" | tee -a $REPO/github/shell/func_sample.log | cat -l log}; tcpdv"
- 
+tcpdv() {
+#	echo $(sudo tcpdump -vv | grep -i $1 | tee -a $REPO/github/shell/func_sample.log | cat -l log)
+	echo $(sudo tcpdump -vv | grep -i $1 | tee ~/lab/tcpdump_UDP.log | cat -l log)
+}
+
+yes | cp -rf $PRFLD/cust_usr_exp.sh $REPO/github/custom_scripts/ 
 
