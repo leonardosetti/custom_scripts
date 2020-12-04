@@ -32,9 +32,10 @@ tcpdv() {
 
 yes | cp -rf $PRFLD/cust_usr_exp.sh $REPO/github/custom_scripts/ 
 
+export TODAY=$(date|awk '{print $2" " $3" " $4}')
 up_script_git() {
 	echo $(git -C $REPO/github/custom_scripts/ add .)
-	echo $(git -C $REPO/github/custom_scripts/ commit -am 'auto push from' $(hostname) ' as' $(whoami) ' at' $(date))
+	echo $(git -C $REPO/github/custom_scripts/ commit -am 'auto push from $HOST  as $USER at $TODAY')
 	echo $(git -C $REPO/github/custom_scripts/ push)
 }
 
